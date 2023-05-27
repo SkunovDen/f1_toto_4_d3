@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/f1_toto_4_d3/static/css/main.073c9b0a.css",
+    "main.js": "/f1_toto_4_d3/static/js/main.00d2a0aa.js",
+    "index.html": "/f1_toto_4_d3/index.html",
+    "main.073c9b0a.css.map": "/f1_toto_4_d3/static/css/main.073c9b0a.css.map",
+    "main.00d2a0aa.js.map": "/f1_toto_4_d3/static/js/main.00d2a0aa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.00d2a0aa.js"
+  ]
+}
