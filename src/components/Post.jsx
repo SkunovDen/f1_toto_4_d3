@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { Box, Stack, Button } from "@mui/material";
 import ArticleIcon from '@mui/icons-material/Article';
 import SendIcon from '@mui/icons-material/Send';
-
-
-import Typography from '@mui/material/Typography';
+import Textarea from '@mui/joy/Textarea';
 import Modal from '@mui/material/Modal';
 
 import { useFinishListStore } from '../store/finishListStore'
@@ -29,46 +27,68 @@ const style = {
   };
   
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     
   const podiumList = useFinishListStore(state => state.finishList)
+  const bestLap = useFinishListStore(state => state.bestLap)
+  const qualWinner = useFinishListStore(state => state.qualWinner)
 
-    return(
-        <Box sx={{marginTop: '25px'}}>
-            <div>
-        <Button onClick={handleOpen}>Open modal</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            {podiumList.map((slot, index) => {
-                return(
-                <Typography key={index} >
-                    {index}.{slot.name}
-                </Typography>)
-            })}
-            <Button>Copy to clipboard</Button>
-          </Box>
-        </Modal>
-      </div>
-
-            <Stack direction="column" spacing={2}>
-                <Button className="clearbutton" size="small" variant="contained"
-                 endIcon={<ArticleIcon />}
-                 onClick={()=> setOpen(true)}>
-                    Generate POST
-                </Button>
-                <Button className="clearbutton" size="small" variant="contained"
-                 endIcon={<SendIcon />}>
-                    Send POST
-                </Button>
-            </Stack>
-        </Box>
+  const getPostText = () => {
+    var t = ''
+    // eslint-disable-next-line
+    const b = podiumList.map((slot, index) => {
+      t += (`${index}.${slot.name}\n`)
+      return null
+      }
     )
+    t += `BL.${bestLap.name}\n`
+    t += `Q.${qualWinner.name}`
+    return t
+  }
+
+  const handleShow = () => {
+    setPostText(prev => getPostText())
+    setOpen(prev => true)
+  }
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(postText).then(() => {
+      console.log('Content copied to clipboard');
+    },() => {
+      console.error('Failed to copy');
+    });
+  }
+
+  const [postText, setPostText]=useState('')
+
+  return(
+    <Box sx={{marginTop: '25px'}}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <Box sx={style}>
+          <Textarea minRows={12} maxRows={12}
+            value={postText} />
+          <Button onClick={() => handleCopyToClipboard()}>Copy to clipboard</Button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Button onClick={() => handleClose()}>Cancel</Button>
+        </Box>
+      </Modal>
+
+      <Stack direction="column" spacing={2}>
+        <Button className="clearbutton" size="small" variant="contained"
+          endIcon={<ArticleIcon />}
+          onClick={()=> handleShow()}>
+            Generate POST
+        </Button>
+        <Button className="clearbutton" size="small" variant="contained"
+          endIcon={<SendIcon />}>
+            Send POST
+        </Button>
+      </Stack>
+    </Box>
+  )
 }
 
 export default Post

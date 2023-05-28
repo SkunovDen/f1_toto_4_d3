@@ -19,7 +19,7 @@ const Podium = () => {
              {/* sx={{border: '1px solid wheat', borderRadius: '11px', margin: 3}}> */}
 
             <Stack>
-                <Typography sx={{margin:'auto', fontWeight:800}}>RESULTS:</Typography>
+                <Typography sx={{margin:'auto', fontWeight:800}}>POSITIONS PREDICTION:</Typography>
                 {podiumList.sort(sortDrivers).map((driver,index) => 
                     <PodiumSlot slot={driver} key={index} />
                 )}
