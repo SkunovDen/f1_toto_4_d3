@@ -81,9 +81,12 @@ export const useFinishListStore = create((set) => ({
       })
   }),
 
-  clearFinishListSlot: (slot) =>  set((state) => {
+  clearFinishListSlot: (slotPosition) =>  set((state) => {
+    const updated = state.finishList.map(slot=>{
+      return slot.position === slotPosition? {...slot, name:''} : slot
+    })
     return ({
-      ...state})
+      ...state, finishList: [...updated]})
   }),
   
 

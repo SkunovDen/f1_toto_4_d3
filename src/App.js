@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <div className='app-container'>
-        <Grid container columns={8} 
+        <Grid container columns={10} 
           justify="center">
 
           <Grid item xs={4}>
@@ -23,8 +23,8 @@ function App() {
             </div>
           </Grid>
 
-          <Grid item xs={4}>
-            <div style={{width: '280px'}}>
+          <Grid item xs={5}>
+            <div style={{width: '300px'}}>
               <Podium />
               <Extras />
 

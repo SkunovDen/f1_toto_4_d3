@@ -9,7 +9,7 @@ import { useFinishListStore } from '../store/finishListStore'
 const Podium = () => {
     const podiumList = useFinishListStore(state => state.finishList)
     const clearFinishList = useFinishListStore(state => state.clearFinishList)
-
+    const clearFinishListSlot = useFinishListStore(state => state.clearFinishListSlot)
 
     const sortDrivers = (d1, d2) => {
         return d1.position - d2.position
@@ -23,10 +23,20 @@ const Podium = () => {
                 </Typography>
                 {podiumList.sort(sortDrivers).map((driver,index) => 
                     <Stack direction="row" spacing={2}>
-                        <div className="slotname" style={{minWidth : '3em'}}>
-                            {++index}
-                        </div>
+                        <Box>
+                            <div className="slotname" style={{minWidth : '3em'}}>
+                                {++index}
+                            </div>
+                        </Box>
+
                         <PodiumSlot slot={driver} key={index} />
+                        
+                        <Box>                       
+                            <div className="slotname clearslot" style={{minWidth : '2em'}}
+                                onClick={()=>clearFinishListSlot(index)}>
+                                &times;
+                            </div>
+                        </Box>
                     </Stack>         
                 )}
                 

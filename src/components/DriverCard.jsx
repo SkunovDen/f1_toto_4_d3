@@ -11,9 +11,15 @@ const DriverCard = (props) => {
     <div className='card'
         onDragStart={(e) => setDragged(driver)}
         draggable={true}>
-        {driver.name}
+          <div style={{width:'70%',marginLeft:'10px'}}>
+          {driver.name}
+          </div>
+
         &nbsp;
+        <div className="number">
         {driver.number}
+        </div>
+        
     </div> 
   )
 }
