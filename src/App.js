@@ -10,42 +10,29 @@ import Post from './components/Post';
 
 
 function App() {
-
-
-
+  
   return (
     <div className="App">
       <div className='app-container'>
-      <Grid container columns={8} 
-        justify="center">
+        <Grid container columns={8} 
+          justify="center">
 
+          <Grid item xs={4}>
+            <div style={{width: '200px'}}>
+              <StartGrid />
+            </div>
+          </Grid>
 
-        <Grid item xs={4}>
-          <div style={{width: '200px'}}>
-            <StartGrid />
-          </div>
-          
-        </Grid>
+          <Grid item xs={4}>
+            <div style={{width: '200px'}}>
+              <Podium />
+              <Extras />
 
-        <Grid item xs={4}>
-          <div style={{width: '200px'}}>
-            <Podium />
-            <Extras />
+              <Post /> 
+            </div>
+          </Grid>
 
-            <Post /> 
-            t
-          </div>
-
-
-        </Grid>
-
-        
-      </Grid>
-
-
-
-      
-    
+        </Grid>    
       </div>
     </div>
   );

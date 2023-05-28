@@ -7,20 +7,14 @@ const DriverCard = (props) => {
 
   const setDragged = useFinishListStore(state => state.setCurrentDragged)
 
-
-  const dragStartHandler = (e, driver) => {
-    setDragged(driver)
-  }
-
-
   return(
-      <div className='card'
-                  onDragStart={(e) => dragStartHandler(e, driver)}
-                  draggable={true}>
-                  {driver.name}
-                  &nbsp;
-                  {driver.number}
-              </div> 
+    <div className='card'
+        onDragStart={(e) => setDragged(driver)}
+        draggable={true}>
+        {driver.name}
+        &nbsp;
+        {driver.number}
+    </div> 
   )
 }
 

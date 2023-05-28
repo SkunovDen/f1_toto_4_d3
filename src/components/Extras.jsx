@@ -24,7 +24,6 @@ const Extras = () => {
     e.target.style.background = 'lightgray'
   }
 
-
   const dropHandler = (e, slot) => {
     e.preventDefault();
     e.target.style.boxShadow ='none'
@@ -35,35 +34,46 @@ const Extras = () => {
 
     return(
       <Box>
-       {/* sx={{border: '1px solid wheat', borderRadius: '11px', margin: 3}}> */}
         <Stack>
           <Typography sx={{margin:'auto', fontWeight:800}}>WINNER OF QUALIFYING:</Typography>
+          
           <div className='card'
               onDragLeave={(e) => dragEndHandler(e)}
               onDragEnd={(e) => dragEndHandler(e)}
               onDragOver={(e) => dragOverHandler(e)}
-              onDrop={(e) => dropHandler(e, slotQualWinner)}
-          > {slotQualWinner.position}&nbsp;:&nbsp;&nbsp;
-              {slotQualWinner.name}
-              &nbsp;
-              {slotQualWinner.number}
+              onDrop={(e) => dropHandler(e, slotQualWinner)}> 
+            {slotQualWinner.position}&nbsp;:&nbsp;&nbsp;
+            {slotQualWinner.name}
+            &nbsp;
+            {slotQualWinner.number}
           </div>
-          <Button sx={{marginY:'20px'}} className="clearbutton" size="small" variant="contained"
-                    onClick={() => clearQualWinner()}>Clear QUAL WINNER</Button>
+
+          <Button sx={{marginY:'20px'}} className="clearbutton" 
+              size="small" variant="contained"
+              onClick={() => clearQualWinner()}>
+            Clear QUAL WINNER
+          </Button>
+          
           <Divider/>
+
           <Typography sx={{margin:'auto', fontWeight:800}}>BEST LAP:</Typography>
           <div className='card'
               onDragLeave={(e) => dragEndHandler(e)}
               onDragEnd={(e) => dragEndHandler(e)}
               onDragOver={(e) => dragOverHandler(e)}
-              onDrop={(e) => dropHandler(e, slotBestLap)}
-          > {slotBestLap.position}&nbsp;:&nbsp;&nbsp;
-              {slotBestLap.name}
-              &nbsp;
-              {slotBestLap.number}
+              onDrop={(e) => dropHandler(e, slotBestLap)}> 
+            {slotBestLap.position}&nbsp;:&nbsp;&nbsp;
+            {slotBestLap.name}
+            &nbsp;
+            {slotBestLap.number}
           </div>
-          <Button sx={{marginY:'20px'}} className="clearbutton" size="small" variant="contained"
-                    onClick={() => clearBestLap()}>Clear BEST LAP</Button>
+
+          <Button sx={{marginY:'20px'}} className="clearbutton" 
+              size="small" variant="contained"
+              onClick={() => clearBestLap()}>
+            Clear BEST LAP
+          </Button>
+
           <Divider/>
         </Stack> 
       </Box>
