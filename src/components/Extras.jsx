@@ -35,19 +35,25 @@ const Extras = () => {
     return(
       <Box>
         <Stack>
-          <Typography sx={{margin:'auto', fontWeight:800}}>WINNER OF QUALIFYING:</Typography>
-          
-          <div className='card'
-              onDragLeave={(e) => dragEndHandler(e)}
-              onDragEnd={(e) => dragEndHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onDrop={(e) => dropHandler(e, slotQualWinner)}> 
-            {slotQualWinner.position}&nbsp;:&nbsp;&nbsp;
-            {slotQualWinner.name}
-            &nbsp;
-            {slotQualWinner.number}
-          </div>
+          <Typography sx={{margin:'auto', fontWeight:800}}>
+              ПОБЕДИТЕЛЬ КВАЛИФИКАЦИИ
+          </Typography>
 
+          <Stack direction="row" spacing={2}>  
+            <div className="slotname" style={{minWidth : '3em'}}>
+                К
+            </div>
+            <Box>
+              <div className='card'
+                  onDragLeave={(e) => dragEndHandler(e)}
+                  onDragEnd={(e) => dragEndHandler(e)}
+                  onDragOver={(e) => dragOverHandler(e)}
+                  onDrop={(e) => dropHandler(e, slotQualWinner)}> 
+                {slotQualWinner.name}
+              </div>
+            </Box>
+          </Stack> 
+          
           <Button sx={{marginY:'20px'}} className="clearbutton" 
               size="small" variant="contained"
               onClick={() => clearQualWinner()}>
@@ -56,17 +62,26 @@ const Extras = () => {
           
           <Divider/>
 
-          <Typography sx={{margin:'auto', fontWeight:800}}>BEST LAP:</Typography>
-          <div className='card'
-              onDragLeave={(e) => dragEndHandler(e)}
-              onDragEnd={(e) => dragEndHandler(e)}
-              onDragOver={(e) => dragOverHandler(e)}
-              onDrop={(e) => dropHandler(e, slotBestLap)}> 
-            {slotBestLap.position}&nbsp;:&nbsp;&nbsp;
-            {slotBestLap.name}
-            &nbsp;
-            {slotBestLap.number}
-          </div>
+          <Typography sx={{margin:'auto', fontWeight:800}}>
+            ЛУЧШИЙ КРУГ
+          </Typography>
+          
+          <Stack direction="row" spacing={2}>  
+            <div className="slotname" style={{minWidth : '3em'}}>
+                ЛК
+            </div>
+            <Box>
+              <div className='card'
+                  onDragLeave={(e) => dragEndHandler(e)}
+                  onDragEnd={(e) => dragEndHandler(e)}
+                  onDragOver={(e) => dragOverHandler(e)}
+                  onDrop={(e) => dropHandler(e, slotBestLap)}> 
+                {slotBestLap.name}
+              </div>
+            </Box>
+          </Stack> 
+          
+          
 
           <Button sx={{marginY:'20px'}} className="clearbutton" 
               size="small" variant="contained"

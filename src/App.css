@@ -5,7 +5,7 @@
 }
 
 .App {
-  width: 60vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   margin: auto;
@@ -29,6 +29,16 @@
   margin-top: 5px;
   /* margin-bottom: 3px; */
   cursor: grab;
+}
+
+.slotname{
+  height: 2em;
+  border-radius: 7px;
+  border: 2px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .clearbutton{

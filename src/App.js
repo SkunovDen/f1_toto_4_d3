@@ -18,13 +18,13 @@ function App() {
           justify="center">
 
           <Grid item xs={4}>
-            <div style={{width: '200px'}}>
+            <div style={{width: '280px'}}>
               <StartGrid />
             </div>
           </Grid>
 
           <Grid item xs={4}>
-            <div style={{width: '200px'}}>
+            <div style={{width: '280px'}}>
               <Podium />
               <Extras />
 

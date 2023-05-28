@@ -14,7 +14,7 @@ import { useFinishListStore } from '../store/finishListStore'
 const Post = () => {
 
 
-const style = {
+const modalBoxStyle = {
     position :'absolute',
     top: '50%',
     left: '50%',
@@ -37,12 +37,13 @@ const style = {
     var t = ''
     // eslint-disable-next-line
     const b = podiumList.map((slot, index) => {
-      t += (`${index}.${slot.name}\n`)
+      t += (`${slot.name}\n`)
       return null
       }
     )
-    t += `BL.${bestLap.name}\n`
-    t += `Q.${qualWinner.name}`
+    t += `К ${qualWinner.name}\n`
+    t += `ЛК ${bestLap.name}`
+
     return t
   }
 
@@ -67,7 +68,7 @@ const style = {
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style}>
+        <Box sx={modalBoxStyle}>
           <Textarea minRows={12} maxRows={12}
             value={postText} />
           <Button onClick={() => handleCopyToClipboard()}>Copy to clipboard</Button>

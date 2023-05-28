@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Button, Stack, Divider, Typography } from "@mui/material";
+import { Box, Button, Stack, Divider, Typography} from "@mui/material";
+
 
 
 import PodiumSlot from "./PodiumSlot";
@@ -16,12 +17,17 @@ const Podium = () => {
     
     return(
         <Box>
-             {/* sx={{border: '1px solid wheat', borderRadius: '11px', margin: 3}}> */}
-
             <Stack>
-                <Typography sx={{margin:'auto', fontWeight:800}}>POSITIONS PREDICTION:</Typography>
+                <Typography sx={{margin:'auto', fontWeight:800}}>
+                    ПРОГНОЗ
+                </Typography>
                 {podiumList.sort(sortDrivers).map((driver,index) => 
-                    <PodiumSlot slot={driver} key={index} />
+                    <Stack direction="row" spacing={2}>
+                        <div className="slotname" style={{minWidth : '3em'}}>
+                            {++index}
+                        </div>
+                        <PodiumSlot slot={driver} key={index} />
+                    </Stack>         
                 )}
                 
                 <Button sx={{marginY:'20px'}} className="clearbutton" size="small" variant="contained"

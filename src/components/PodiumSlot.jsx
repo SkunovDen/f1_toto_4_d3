@@ -63,7 +63,7 @@ const PodiumSlot = (props) => {
             onDragEnd={(e) => dragEndHandler(e)}
             onDragOver={(e) => dragOverHandler(e)}
             onDrop={(e) => dropHandler(e, slot)}
-        > {slot.position}&nbsp;:&nbsp;&nbsp;
+        >
             {slot.name}
             &nbsp;
             {slot.number}
