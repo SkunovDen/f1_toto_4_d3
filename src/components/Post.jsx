@@ -83,10 +83,10 @@ const modalBoxStyle = {
           onClick={()=> handleShow()}>
             Generate POST
         </Button>
-        <Button className="clearbutton" size="small" variant="contained"
+        {/* <Button className="clearbutton" size="small" variant="contained"
           endIcon={<SendIcon />}>
             Send POST
-        </Button>
+        </Button> */}
       </Stack>
     </Box>
   )
