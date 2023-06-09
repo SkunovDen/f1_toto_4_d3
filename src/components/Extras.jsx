@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Stack, Button, Divider, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { useFinishListStore } from '../store/finishListStore'
 
 
@@ -35,14 +35,17 @@ const Extras = () => {
     return(
       <Box>
         <Stack>
-          <Typography sx={{margin:'auto', fontWeight:800}}>
+          <Typography sx={{marginLeft: 0, marginTop:'25px', fontWeight:800}}>
               ПОБЕДИТЕЛЬ КВАЛИФИКАЦИИ
           </Typography>
 
-          <Stack direction="row" spacing={2}>  
-            <div className="slotname" style={{minWidth : '3em'}}>
-                К
-            </div>
+          <Stack direction="row" spacing={2}>
+            <Box>
+                <div className="slotname" style={{minWidth : '3em'}}>
+                    K
+                </div>
+            </Box>
+
             <Box>
               <div className='card'
                   onDragLeave={(e) => dragEndHandler(e)}
@@ -52,24 +55,27 @@ const Extras = () => {
                 {slotQualWinner.name}
               </div>
             </Box>
-          </Stack> 
-          
-          <Button sx={{marginY:'20px'}} className="clearbutton" 
-              size="small" variant="contained"
-              onClick={() => clearQualWinner()}>
-            Clear QUAL WINNER
-          </Button>
-          
-          <Divider/>
+            
+            <Box>                       
+                <div className="slotname clearslot" style={{minWidth : '3em'}}
+                    onClick={() => clearQualWinner()}>
+                    &times;
+                </div>
+            </Box>
+          </Stack>
 
-          <Typography sx={{margin:'auto', fontWeight:800}}>
+
+          <Typography sx={{marginLeft:0, marginTop:'25px', fontWeight:800}}>
             ЛУЧШИЙ КРУГ
           </Typography>
           
           <Stack direction="row" spacing={2}>  
-            <div className="slotname" style={{minWidth : '3em'}}>
-                ЛК
-            </div>
+            <Box>
+              <div className="slotname" style={{minWidth : '3em'}}>
+                ЛK
+              </div>
+            </Box>
+
             <Box>
               <div className='card'
                   onDragLeave={(e) => dragEndHandler(e)}
@@ -79,17 +85,15 @@ const Extras = () => {
                 {slotBestLap.name}
               </div>
             </Box>
+            
+            <Box>                       
+                <div className="slotname clearslot" style={{minWidth : '3em'}}
+                    onClick={() => clearBestLap()}>
+                    &times;
+                </div>
+            </Box>
           </Stack> 
-          
-          
 
-          <Button sx={{marginY:'20px'}} className="clearbutton" 
-              size="small" variant="contained"
-              onClick={() => clearBestLap()}>
-            Clear BEST LAP
-          </Button>
-
-          <Divider/>
         </Stack> 
       </Box>
     )

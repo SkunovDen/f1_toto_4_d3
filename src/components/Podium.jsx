@@ -18,9 +18,10 @@ const Podium = () => {
     return(
         <Box>
             <Stack>
-                <Typography sx={{margin:'auto', fontWeight:800}}>
+                <Typography sx={{marginLeft: 0, marginTop: '25px', fontWeight:800}}>
                     ПРОГНОЗ
                 </Typography>
+
                 {podiumList.sort(sortDrivers).map((driver,index) => 
                     <Stack direction="row" spacing={2} key={index}>
                         <Box>
@@ -32,7 +33,7 @@ const Podium = () => {
                         <PodiumSlot slot={driver} key={index} />
                         
                         <Box>                       
-                            <div className="slotname clearslot" style={{minWidth : '2em'}}
+                            <div className="slotname clearslot" style={{minWidth : '3em'}}
                                 onClick={()=>clearFinishListSlot(index)}>
                                 &times;
                             </div>
@@ -41,8 +42,10 @@ const Podium = () => {
                 )}
                 
                 <Button sx={{marginY:'20px'}} className="clearbutton" size="small" variant="contained"
-                    onClick={() => clearFinishList()}>CLEAR LIST</Button>
-                <Divider/>
+                    onClick={() => clearFinishList()}>
+                        CLEAR LIST
+                </Button>
+               
             </Stack>
             
         </Box>

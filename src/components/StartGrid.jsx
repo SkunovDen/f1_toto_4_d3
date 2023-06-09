@@ -13,7 +13,10 @@ const StartGrid = (props) => {
     return(
         <Box>
             <Stack>
-                <Typography sx={{marginLeft:'70px', marginRight:'auto', fontWeight:800}}>ПИЛОТЫ</Typography>
+                <Typography sx={{marginLeft: 0, marginTop:'25px', fontWeight:800}}>
+                    ПИЛОТЫ
+                </Typography>
+                
                 {drivers.sort(sortDrivers).map((driver,index) => 
                     <DriverCard startDrag={props.startDrag} driver={driver} key={index} />
                 )}

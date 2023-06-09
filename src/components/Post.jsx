@@ -48,18 +48,21 @@ const modalBoxStyle = {
   }
 
   const isPrognoseFull = () => {
-    console.log(podiumList);
-    podiumList.map(slot => {
+    var result = true
+    podiumList.forEach(slot => {
       if (slot.name === null) {
-        return false
+        result = false
       }
     })
 
-    if ((!qualWinner.name) || (!bestLap.name)) {
-      return false
+    if (!qualWinner.name) {
+      result = false
+    }
+    if (!bestLap.name) {
+      result = false
     }
 
-    return true
+    return result
   }
 
   const handleShow = () => {
