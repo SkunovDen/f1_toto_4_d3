@@ -26,16 +26,16 @@ export const useFinishListStore = create((set) => ({
 
 //FINISH LIST
   finishList : [
-      {position:1, id: 0, name: ''},
-      {position:2, id: 0, name: ''},
-      {position:3, id: 0, name: ''},
-      {position:4, id: 0, name: ''},
-      {position:5, id: 0, name: ''},
-      {position:6, id: 0, name: ''},
-      {position:7, id: 0, name: ''},
-      {position:8, id: 0, name: ''},
-      {position:9, id: 0, name: ''},
-      {position:10, id: 0, name: ''}
+      {position:1, id: 0, name: null},
+      {position:2, id: 0, name: null},
+      {position:3, id: 0, name: null},
+      {position:4, id: 0, name: null},
+      {position:5, id: 0, name: null},
+      {position:6, id: 0, name: null},
+      {position:7, id: 0, name: null},
+      {position:8, id: 0, name: null},
+      {position:9, id: 0, name: null},
+      {position:10, id: 0, name: null},
   ],
 
   addDriverToSlot: (slot) => set((state) => {
@@ -67,23 +67,23 @@ export const useFinishListStore = create((set) => ({
       return ({
         ...state,
         finishList : [
-            {position:1, id: 0, name: ''},
-            {position:2, id: 0, name: ''},
-            {position:3, id: 0, name: ''},
-            {position:4, id: 0, name: ''},
-            {position:5, id: 0, name: ''},
-            {position:6, id: 0, name: ''},
-            {position:7, id: 0, name: ''},
-            {position:8, id: 0, name: ''},
-            {position:9, id: 0, name: ''},
-            {position:10, id: 0, name: ''}
+            {position:1, id: 0, name: null},
+            {position:2, id: 0, name: null},
+            {position:3, id: 0, name: null},
+            {position:4, id: 0, name: null},
+            {position:5, id: 0, name: null},
+            {position:6, id: 0, name: null},
+            {position:7, id: 0, name: null},
+            {position:8, id: 0, name: null},
+            {position:9, id: 0, name: null},
+            {position:10, id: 0, name: null}
         ],
       })
   }),
 
   clearFinishListSlot: (slotPosition) =>  set((state) => {
     const updated = state.finishList.map(slot=>{
-      return slot.position === slotPosition? {...slot, name:''} : slot
+      return slot.position === slotPosition? {...slot, name: null} : slot
     })
     return ({
       ...state, finishList: [...updated]})

@@ -22,7 +22,7 @@ const Podium = () => {
                     ПРОГНОЗ
                 </Typography>
                 {podiumList.sort(sortDrivers).map((driver,index) => 
-                    <Stack direction="row" spacing={2}>
+                    <Stack direction="row" spacing={2} key={index}>
                         <Box>
                             <div className="slotname" style={{minWidth : '3em'}}>
                                 {++index}

@@ -47,9 +47,30 @@ const modalBoxStyle = {
     return t
   }
 
+  const isPrognoseFull = () => {
+    console.log(podiumList);
+    podiumList.map(slot => {
+      if (slot.name === null) {
+        return false
+      }
+    })
+
+    if ((!qualWinner.name) || (!bestLap.name)) {
+      return false
+    }
+
+    return true
+  }
+
   const handleShow = () => {
-    setPostText(prev => getPostText())
-    setOpen(prev => true)
+    // const prognoseFull = isFull()
+    // console.log('FULL : ', prognoseFull);
+    if(isPrognoseFull()){
+      setPostText(prev => getPostText())
+      setOpen(prev => true)
+    } else {
+      alert('Заполните все поля прогноза!')
+    }
   }
 
   const handleCopyToClipboard = () => {
