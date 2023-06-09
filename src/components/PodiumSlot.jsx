@@ -25,8 +25,17 @@ const PodiumSlot = (props) => {
     return contains
   }
 
-  const dragEnterHandler = () => {
+  const dragEnterHandler = (e) => {
     setEnableDrop(prev => !checkFinishListToContains())
+
+    e.preventDefault();
+    // console.log('dragOverHandler : ', checkFinishListToContains() );
+    if (!checkFinishListToContains()) {
+      e.target.style.boxShadow ='0px 0px 11px 7px rgba(34, 60, 80, 0.3)'
+      e.target.style.background = 'lightgray'
+    } else {
+      e.target.style.boxShadow ='0px 0px 11px 7px rgba(254, 0, 0, 0.8)'
+    }
   }
 
   const dragEndHandler = (e) => {
@@ -35,15 +44,12 @@ const PodiumSlot = (props) => {
   }
 
   const dragOverHandler = (e) => {
-    e.preventDefault();
-    e.target.style.boxShadow ='0px 0px 11px 7px rgba(34, 60, 80, 0.3)'
-    e.target.style.background = 'lightgray'    
+    e.preventDefault(); 
   }
 
 
   const dropHandler = (e) => {
     e.preventDefault();
-    console.log("DROP ", enableDrop);
     
     e.target.style.boxShadow ='none'
     e.target.style.background = 'white'
@@ -58,7 +64,7 @@ const PodiumSlot = (props) => {
       <Box>
        
         <div className='card'
-        onDragEnter={()=>dragEnterHandler()}
+        onDragEnter={(e)=>dragEnterHandler(e)}
             onDragLeave={(e) => dragEndHandler(e)}
             onDragEnd={(e) => dragEndHandler(e)}
             onDragOver={(e) => dragOverHandler(e)}
