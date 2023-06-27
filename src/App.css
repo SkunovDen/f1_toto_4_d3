@@ -63,3 +63,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.finishList{
+  border: 2px solid lightgray;
+  border-radius: 7px;
+  padding: 5px 11px;
+}

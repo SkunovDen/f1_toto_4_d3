@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Box, Stack, Button } from "@mui/material";
 import ArticleIcon from '@mui/icons-material/Article';
 // import SendIcon from '@mui/icons-material/Send';
-import Textarea from '@mui/joy/Textarea';
 import Modal from '@mui/material/Modal';
 
 import { useFinishListStore } from '../store/finishListStore'
@@ -14,7 +13,7 @@ import { useFinishListStore } from '../store/finishListStore'
 const Post = () => {
 
 
-const modalBoxStyle = {
+  const modalBoxStyle = {
     position :'absolute',
     top: '50%',
     left: '50%',
@@ -32,20 +31,6 @@ const modalBoxStyle = {
   const podiumList = useFinishListStore(state => state.finishList)
   const bestLap = useFinishListStore(state => state.bestLap)
   const qualWinner = useFinishListStore(state => state.qualWinner)
-
-  const getPostText = () => {
-    var t = ''
-    // eslint-disable-next-line
-    const b = podiumList.map((slot, index) => {
-      t += (`${slot.name}\n`)
-      return null
-      }
-    )
-    t += `К ${qualWinner.name}\n`
-    t += `ЛК ${bestLap.name}`
-
-    return t
-  }
 
   const isPrognoseFull = () => {
     var result = true
@@ -66,25 +51,42 @@ const modalBoxStyle = {
   }
 
   const handleShow = () => {
-    // const prognoseFull = isFull()
-    // console.log('FULL : ', prognoseFull);
     if(isPrognoseFull()){
-      setPostText(prev => getPostText())
       setOpen(prev => true)
     } else {
       alert('Заполните все поля прогноза!')
     }
   }
 
-  const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(postText).then(() => {
-      console.log('Content copied to clipboard');
-    },() => {
-      console.error('Failed to copy');
-    });
+  function selectText(containerid) {
+    if (document.selection) { // IE
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+      // eslint-disable-next-line
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+    }
   }
 
-  const [postText, setPostText]=useState('')
+  const handleCopyToClipboard = () => {
+    selectText('selectable')
+
+    document.execCommand('copy');
+
+    if (window.getSelection) {
+      if (window.getSelection().empty) {  // Chrome
+        window.getSelection().empty();
+      } else if (window.getSelection().removeAllRanges) {  // Firefox
+        window.getSelection().removeAllRanges();
+      }
+    } else if (document.selection) {  // IE?
+      document.selection.empty();
+    }
+  }
 
   return(
     <Box sx={{marginTop: '25px'}}>
@@ -93,12 +95,27 @@ const modalBoxStyle = {
         onClose={handleClose}
       >
         <Box sx={modalBoxStyle}>
-          <Textarea minRows={12} maxRows={12}
-            value={postText} />
+          <div id="selectable" className="finishList" onClick={() => selectText('selectable')}>
+            {podiumList.map((slot) => {
+                return(<>
+                  {slot.name}
+                  <br></br>
+                  </>
+                )
+              }
+            )}
+
+            {'К '}{qualWinner.name}
+            <br></br>
+            {'ЛК '}{bestLap.name}
+          
+          </div>
+          
           <Button onClick={() => handleCopyToClipboard()}>Copy to clipboard</Button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Button onClick={() => handleClose()}>Cancel</Button>
         </Box>
+
       </Modal>
 
       <Stack direction="column" spacing={2}>
