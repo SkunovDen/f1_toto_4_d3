@@ -47,7 +47,7 @@ const Post = () => {
       result = false
     }
 
-    return result
+    return true //result
   }
 
   const handleShow = () => {
@@ -59,11 +59,14 @@ const Post = () => {
   }
 
   function selectText(containerid) {
+
     if (document.selection) { // IE
         var range = document.body.createTextRange();
         range.moveToElementText(document.getElementById(containerid));
         range.select();
-    } else if (window.getSelection) {
+    } 
+    else 
+    if (window.getSelection) {
       // eslint-disable-next-line
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
@@ -95,12 +98,13 @@ const Post = () => {
         onClose={handleClose}
       >
         <Box sx={modalBoxStyle}>
-          <div id="selectable" className="finishList" onClick={() => selectText('selectable')}>
-            {podiumList.map((slot) => {
-                return(<>
+          <div>
+            <div  id="selectable" className="finishList">
+            {podiumList.map((slot, index) => {
+                return(<div key={index}>
                   {slot.name}
                   <br></br>
-                  </>
+                  </div>
                 )
               }
             )}
@@ -108,16 +112,17 @@ const Post = () => {
             {'К '}{qualWinner.name}
             <br></br>
             {'ЛК '}{bestLap.name}
-          
+          </div>
           </div>
           
           <Button onClick={() => handleCopyToClipboard()}>Copy to clipboard</Button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Button onClick={() => handleClose()}>Cancel</Button>
         </Box>
-
+        
       </Modal>
 
+      
       <Stack direction="column" spacing={2}>
         <Button className="clearbutton" size="small" variant="contained"
           endIcon={<ArticleIcon />}
